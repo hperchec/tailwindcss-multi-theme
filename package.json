@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-multi-theme",
-  "version": "0.0.0-development",
+  "version": "0.0.1",
   "description": "The easiest way to create themes with Tailwind CSS.",
   "main": "dist/index.js",
   "files": [
@@ -22,15 +22,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/estevanmaito/tailwindcss-multi-theme.git"
+    "url": "https://github.com/hperchec/tailwindcss-multi-theme"
   },
   "keywords": ["tailwind", "theme", "dark", "multi"],
-  "author": "Estevan Maito <ejmaito@gmail.com>",
+  "author": "Hervé Perchec <herve.perchec@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/estevanmaito/tailwindcss-multi-theme/issues"
+    "url": "https://github.com/hperchec/tailwindcss-multi-theme/issues"
   },
-  "homepage": "https://github.com/estevanmaito/tailwindcss-multi-theme#readme",
+  "homepage": "https://github.com/hperchec/tailwindcss-multi-theme",
   "devDependencies": {
     "@babel/cli": "7.8.4",
     "@babel/core": "7.9.6",
