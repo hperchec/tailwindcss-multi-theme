@@ -1,21 +1,21 @@
 // Tailwind plugin
-const plugin = require('tailwindcss/plugin')
+import plugin from 'tailwindcss/plugin.js'
 // PostCSS selector parser
-const selectorParser = require('postcss-selector-parser')
+import selectorParser from 'postcss-selector-parser'
 
 // Function to escape special characters in variant name
-function escapeSpecialCharacters(str) {
+function escapeSpecialCharacters (str) {
   const regex = /([^(A-Za-z0-9-_ )])/g
   return str.replace(regex, '\\\$&') // eslint-disable-line
 }
 
 // Default options
 const defaultOptions = {
-  themeClassPrefix: 'theme-',
+  themeClassPrefix: 'theme-'
 }
 
 // Enable plugin options
-module.exports = plugin.withOptions(function (options = {}) {
+export default plugin.withOptions(function (options = {}) {
   // First, merge options object
   options = Object.assign(defaultOptions, options)
   // The plugin function
@@ -35,7 +35,7 @@ module.exports = plugin.withOptions(function (options = {}) {
       )
     }
 
-    function generatePseudoClassVariant(themeVariant, pseudoClass, selectorPrefix = pseudoClass) {
+    function generatePseudoClassVariant (themeVariant, pseudoClass, selectorPrefix = pseudoClass) {
       const cssClassName = escapeSpecialCharacters(`${options.themeClassPrefix}${themeVariant}`)
       const root = `.${cssClassName} `
       addVariant(`${themeVariant}:${selectorPrefix}`, ({ modifySelectors, separator }) => {
@@ -51,7 +51,7 @@ module.exports = plugin.withOptions(function (options = {}) {
       })
     }
 
-    function generateGroupVariant(themeVariant, pseudoClass, selectorPrefix) {
+    function generateGroupVariant (themeVariant, pseudoClass, selectorPrefix) {
       const cssClassName = escapeSpecialCharacters(`${options.themeClassPrefix}${themeVariant}`)
       const root = `.${cssClassName} `
       addVariant(`${themeVariant}:${selectorPrefix}`, ({ modifySelectors, separator }) => {
@@ -66,7 +66,7 @@ module.exports = plugin.withOptions(function (options = {}) {
       })
     }
 
-    function generateDefaultVariant(themeVariant) {
+    function generateDefaultVariant (themeVariant) {
       const cssClassName = escapeSpecialCharacters(`${options.themeClassPrefix}${themeVariant}`)
       const root = `.${cssClassName} `
       addVariant(`${themeVariant}`, ({ modifySelectors, separator }) => {
