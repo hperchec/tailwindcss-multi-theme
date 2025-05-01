@@ -1,12 +1,28 @@
-module.exports = {
-  purge: ['*.html'],
+import multiThemePlugin from '@hperchec/tailwindcss-multi-theme'
+
+export default {
+  darkMode: 'selector',
+  content: [
+    'index.html'
+  ],
   theme: {
-    themeVariants: ['dark'],
-    extend: {},
+    themeVariants: [
+      '@light',
+      '@dark',
+      '@banana'
+    ],
+    extend: {
+      colors: {
+        'bright-sun': '#FBD644',
+        'neon-carrot': '#FAA743',
+        'bronze-olive': '#554714',
+        'grey-blue': '#6390A5'
+      }
+    }
   },
-  variants: {
-    backgroundColor: ['responsive', 'dark'],
-    textColor: ['responsive', 'dark'],
-  },
-  plugins: [require('tailwindcss-multi-theme')],
+  plugins: [
+    multiThemePlugin({
+      themeClassPrefix: 'theme-'
+    })
+  ]
 }
