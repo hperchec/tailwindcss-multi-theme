@@ -43,17 +43,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hperchec/tailwindcss-multi-theme.git"
+    "url": "git+https://github.com/hperchec/tailwindcss-multi-theme.git"
   },
   "keywords": [
     "tailwind",
+    "plugin",
     "theme",
     "dark",
     "multi"
   ],
-  "author": "Estevan Maito <ejmaito@gmail.com>",
+  "author": {
+    "name": "Estevan Maito",
+    "email": "ejmaito@gmail.com",
+    "url": "https://github.com/estevanmaito"
+  },
   "contributors": [
-    "Hervé Perchec <herve.perchec@gmail.com>"
+    {
+      "name": "Hervé Perchec",
+      "email": "herve.perchec@gmail.com",
+      "url": "https://github.com/hperchec"
+    }
   ],
   "license": "MIT",
   "bugs": {

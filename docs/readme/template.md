@@ -19,29 +19,36 @@ Based on the original version of [estevanmaito/tailwindcss-multi-theme](https://
 - plugin now accepts [options](#options)
 - support for [special characters](#theme-names) in theme name
 
-## 💿 Install
+## 🚀 Get started
+
+Just install the plugin in your awesome **tailwindcss** project:
 
 ```sh
 npm install @hperchec/tailwindcss-multi-theme
 ```
 
-In `tailwind.config.js` add `themeVariants` to the `theme` property, with the value(s) of your theme(s), and require the plugin. That's it.
+## 🕹️ Usage
+
+In `tailwind.config.js` add `themeVariants` to the `theme` property, with the value(s) of your theme(s), and use the plugin. That's it.
 
 ```js
 // tailwind.config.js
 import multiThemePlugin from '@hperchec/tailwindcss-multi-theme'
 
 export default {
+  darkMode: 'selector',
   theme: {
     themeVariants: [
       // Define themes here
       'light',
       'dark',
       'banana'
-    ]
-  },
-  variants: {
-    // just add 'light', 'dark' and 'banana' to any variant that you want to style
+    ],
+    extend: {
+      colors: {
+        // Here you can add your theme specific colors...
+      }
+    }
   },
   plugins: [
     // Multi-theme plugin
@@ -53,9 +60,7 @@ export default {
 
 It will create a set of classes based on your `variants` and expect a class `.theme-<the name of your themeVariants>` at the top of your HTML document.
 
-`themeVariants: ['dark']` would activate its classes under `.theme-dark`.
-
-## 🚀 Usage
+For example, you can set attribute `class="theme-banana"` to the `<html>` element to apply *banana* theme. In that case, an element with `banana:bg-yellow` will have a yellow background.
 
 ### Options
 
@@ -93,11 +98,10 @@ Here, we add `@` prefix to the theme names to easily identify theme in class nam
 
 ```js
 // tailwind.config.js
-const multiThemePlugin = require('tailwindcss-multi-theme')
+import multiThemePlugin from '@hperchec/tailwindcss-multi-theme'
 
-module.exports = {
-  // Disable dark mode -> theme management is provided by multi-theme plugin
-  darkMode: false,
+export default {
+  darkMode: 'selector',
   theme: {
     themeVariants: [
       // Define themes here
@@ -105,27 +109,13 @@ module.exports = {
       '@dark',
       '@banana'
     ],
-    // Theme colors
-    colors: {
-      white:                  '#FFFFFF',
-      black:                  '#000000',
-      '@light-alabaster':     '#FAFAFA',
-      '@dark-tuna':           '#36393F',
-      '@banana-sandy-yellow': '#FFEA78',
-      // and other theme colors...
-    },
-  },
-  variants: {
     extend: {
-      backgroundColor: [
-        '@light',
-        '@light:hover',
-        '@light:focus',
-        '@dark',
-        '@dark:hover',
-        '@dark:focus'
-      ],
-      // ...
+      colors: {
+        '@light-alabaster':     '#FAFAFA',
+        '@dark-tuna':           '#36393F',
+        '@banana-sandy-yellow': '#FFEA78',
+        // and other theme colors...
+      }
     }
   },
   plugins: [
@@ -145,6 +135,62 @@ In this example, it will generate:
 
 ### Good practices
 
+Here some good practices I recommend to follow
+
+#### Theme switch
+
+You should use something like a `<select>` and a short JavaScript code to switch between your themes:
+
+```html
+<select id="theme-select">
+  <option value="light">Light</option>
+  <option value="dark">Dark</option>
+  <option value="banana">Banana</option>
+</select>
+```
+
+```js
+let currentTheme
+
+/**
+ * Switch to the given theme by setting the corresponding class on html element
+ * @param {string} theme - The theme to switch to
+ */
+function switchToTheme (theme) {
+  // Remove the old class
+  document.documentElement.classList.remove(`theme-@${currentTheme}`)
+  // Set the new theme
+  currentTheme = theme
+  // Add new class on HTML element
+  document.documentElement.classList.add(`theme-@${currentTheme}`)
+}
+
+window.onload = function () {
+  // Add listener of change event to apply theme with the select
+  document.getElementById('theme-select').onchange = function (e) {
+    switchToTheme(e.target.value)
+  }
+}
+```
+
+If you want to automatically apply a light or dark theme based on user preference, you can do it like:
+
+```js
+window.onload = function () {
+  if (!!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    switchToTheme('dark')
+  } else {
+    switchToTheme('light')
+  }
+  // Add listener of change event to apply theme with the select
+  document.getElementById('theme-select').onchange = function (e) {
+    switchToTheme(e.target.value)
+  }
+}
+```
+
+#### Colors
+
 It's suggested to define your theme colors in a separated file (for example `./themes.js` in your project):
 
 > **TIP**: you can use a tool like [color-name-finder](https://colors.artyclick.com/color-name-finder/) to name your colors correctly
@@ -159,7 +205,7 @@ const commonColors = {
   // ...
 }
 
-module.exports = {
+export default {
   themes: {
     // 'light' theme specific colors
     'light': {
@@ -187,11 +233,11 @@ Then you can dynamically set in `tailwind.config.js`:
 
 ```js
 // Example: tailwind.config.js
-const multiThemePlugin = require('tailwindcss-multi-theme')
-const themes = require('./themes.js')
+import multiThemePlugin from '@hperchec/tailwindcss-multi-theme'
+import themes from './themes.js'
 
-module.exports = {
-  darkMode: false,
+export default {
+  darkMode: 'selector',
   theme: {
     themeVariants: [
       /**
@@ -204,32 +250,34 @@ module.exports = {
         return `@${theme}`
       })
     ],
-    colors: {
-      /**
-       * It will generate colors:
-       * - '@light-primary'
-       * - '@light-secondary'
-       * - '@light-alabaster'
-       * - '@light-text-primary'
-       * - '@dark-primary'
-       * - '@dark-secondary'
-       * - '@dark-tuna'
-       * - '@dark-text-primary'
-       * - '@banana-primary'
-       * - '@banana-secondary'
-       * - '@banana-sandy-yellow'
-       * - '@banana-text-primary'
-       */
-      ...Object.keys(themes).reduce((colors, themeName) => {
-        // Loop on theme colors
-        for (const color in themes[themeName]) {
-          const colorName = `@${themeName}-${color}`
-          const colorValue = themes[themeName][color]
-          obj[colorName] = colorValue
-        }
-        return obj
-      }, {})
-    },
+    extend: {
+      colors: {
+        /**
+         * It will generate colors:
+         * - '@light-primary'
+         * - '@light-secondary'
+         * - '@light-alabaster'
+         * - '@light-text-primary'
+         * - '@dark-primary'
+         * - '@dark-secondary'
+         * - '@dark-tuna'
+         * - '@dark-text-primary'
+         * - '@banana-primary'
+         * - '@banana-secondary'
+         * - '@banana-sandy-yellow'
+         * - '@banana-text-primary'
+         */
+        ...Object.keys(themes).reduce((colors, themeName) => {
+          // Loop on theme colors
+          for (const color in themes[themeName]) {
+            const colorName = `@${themeName}-${color}`
+            const colorValue = themes[themeName][color]
+            obj[colorName] = colorValue
+          }
+          return obj
+        }, {})
+      }
+    }
   },
   plugins: [
     // Multi-theme plugin
@@ -278,6 +326,10 @@ body {
   @apply @banana:text-@banana-text-primary;
 }
 ```
+
+### Examples
+
+You can take a look at the examples in the [./examples](./examples/) folder.
 
 ## 🤝 Contribute
 
