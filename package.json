@@ -87,8 +87,6 @@
     "jest": "26.0.1",
     "juisy": "^2.0.0-beta.14",
     "lodash": "4.17.19",
-    "postcss": "^8.5.3",
-    "postcss-selector-parser": "^6.1.2",
     "prettier": "2.0.5",
     "rimraf": "3.0.2",
     "semantic-release": "^17.0.8",
