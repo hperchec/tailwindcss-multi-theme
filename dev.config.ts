@@ -43,5 +43,22 @@ export default {
         'node ./bin/cli lint --fix'
       ]
     }
+  },
+  release: {
+    hooks: {
+      'before:init': [
+        // Lint and run tests
+        'node ./bin/cli lint --fix',
+        'node ./bin/cli test'
+      ],
+      'after:bump': [
+        // Build code and generate docs
+        'npm run build',
+        'node ./bin/cli docs generate:api',
+        'node ./bin/cli docs generate:readme',
+        'node ./bin/cli docs:cli:private',
+        'node ./bin/cli docs:cli:public'
+      ]
+    }
   }
 } satisfies GlobalSettings
