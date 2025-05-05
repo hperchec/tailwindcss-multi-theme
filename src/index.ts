@@ -1,7 +1,7 @@
 // Tailwind plugin
 import plugin from 'tailwindcss/plugin.js'
 
-type PluginOptions = {
+export type PluginOptions = {
   themeClassPrefix?: string
 }
 
@@ -39,7 +39,7 @@ export default plugin.withOptions(function (options: PluginOptions = {}) {
 
     function generateVariant (themeVariant: string) {
       const cssClassName = escapeSpecialCharacters(`${options.themeClassPrefix}${themeVariant}`)
-      addVariant(`${themeVariant}`, `${cssClassName} &`)
+      addVariant(`${themeVariant}`, `.${cssClassName} &`)
     }
 
     // Generate variants for each theme
