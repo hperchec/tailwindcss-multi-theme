@@ -59,8 +59,8 @@ export default {
         'vite build',
         'node ./bin/cli docs generate:api',
         'node ./bin/cli docs generate:readme',
-        'node ./bin/cli docs:cli -c ./docs/cli/private/config.js',
-        'node ./bin/cli docs:cli -c ./docs/cli/public/config.js'
+        'node ./bin/cli docs generate:cli -c ./docs/cli/private/config.js',
+        'node ./bin/cli docs generate:cli -c ./docs/cli/public/config.js'
       ]
     }
   }
