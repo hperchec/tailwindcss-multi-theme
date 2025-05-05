@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>2.0.1 (2025-05-05)</small>
+
+* build: remove old external dep ([8079133](https://github.com/hperchec/tailwindcss-multi-theme/commit/8079133))
+* build: update package.json files field ([9376920](https://github.com/hperchec/tailwindcss-multi-theme/commit/9376920))
+* docs: update readme template ([6fcb7e0](https://github.com/hperchec/tailwindcss-multi-theme/commit/6fcb7e0))
+
 ## 2.0.0 (2025-05-05)
 
 * build: add @release-it/conventional-changelog dependency ([8c4294f](https://github.com/hperchec/tailwindcss-multi-theme/commit/8c4294f))
