@@ -1,7 +1,7 @@
 import multiThemePlugin from '@hperchec/tailwindcss-multi-theme'
 
 export default {
-  darkMode: 'selector',
+  darkMode: 'false',
   content: [
     'index.html'
   ],

@@ -10,7 +10,7 @@ let currentTheme
  * Detects if user prefers dark mode
  * @returns {boolean}
  */
-function prefersDark() {
+function prefersDark () {
   return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
@@ -32,13 +32,18 @@ function switchToTheme (theme) {
 }
 
 window.onload = function () {
-  if (prefersDark()) {
-    switchToTheme('dark')
-  } else {
-    switchToTheme('light')
-  }
+  // Target the theme select element
+  const themeSelectElement = document.getElementById('theme-select')
+
+  // Theme to automatically apply based on user preference
+  const themeToApply = prefersDark() ? 'dark' : 'light'
+
+  switchToTheme(themeToApply)
+  // Manually set select value
+  themeSelectElement.value = themeToApply
+
   // Add listener of change event to apply theme with the select
-  document.getElementById('theme-select').onchange = function (e) {
+  themeSelectElement.onchange = function (e) {
     switchToTheme(e.target.value)
   }
 }
