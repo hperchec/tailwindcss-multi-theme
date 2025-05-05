@@ -52,8 +52,22 @@ Then, you can open the `index.html` in your browser.
 Run the following command to make a release:
 
 ```sh
-npm run release
+# Show help
+npm run release --help
+# Release a patch
+npm run release --increment patch
+# Release a specific version
+npm run release -i 2.0.0
+# To increment the current prerelease. For example:
+# from   1.0.0-beta.1
+# to     1.0.0-beta.2
+npm run release -i pre
 ```
+
+> 💡 See also:
+>
+> - the **juisy** [release tool documentation](<%= __JUISY_DOCS_HOMEPAGE__ %>)
+> - the **release-it** [package documentation](https://github.com/release-it/release-it)
 
 ## Documentation
 
