@@ -3,8 +3,7 @@ cache: npm
 notifications:
   email: false
 node_js:
-  - 12
-  - 14
+  - 18
   - node
 install:
   - npm install
@@ -12,9 +11,9 @@ script:
   - npm run lint
   - npm run test:coverage
   - npm run build
-after_success:
-  - npm run codecov
-  - npm run semantic-release
+# after_success:
+#   - npm run codecov
+#   - npm run semantic-release
 branches:
   only:
     - master
