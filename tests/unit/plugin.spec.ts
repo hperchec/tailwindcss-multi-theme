@@ -34,7 +34,6 @@ const generatePluginCss = (config = {}, pluginOptions = {}) => {
       from: undefined,
     })
     .then(({ css }) => {
-      console.log('generatezd css: ', css)
       return css
     })
 }
