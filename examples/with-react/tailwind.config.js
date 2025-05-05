@@ -1,12 +1,12 @@
 module.exports = {
-  purge: ['src/**/*.js', 'src/**/*.jsx'],
+  purge: [ 'src/**/*.js', 'src/**/*.jsx' ],
   theme: {
-    themeVariants: ['dark'],
-    extend: {},
+    themeVariants: [ 'dark' ],
+    extend: {}
   },
   variants: {
-    backgroundColor: ['responsive', 'dark'],
-    textColor: ['responsive', 'dark'],
+    backgroundColor: [ 'responsive', 'dark' ],
+    textColor: [ 'responsive', 'dark' ]
   },
-  plugins: [require('tailwindcss-multi-theme')],
+  plugins: [ require('tailwindcss-multi-theme') ]
 }
