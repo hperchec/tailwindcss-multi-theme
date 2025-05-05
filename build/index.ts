@@ -42,7 +42,7 @@ export const buildConfig = {
       })
     ],
     external: [
-      'postcss-selector-parser'
+      // ...
     ]
   }
 } satisfies UserConfig['build']
