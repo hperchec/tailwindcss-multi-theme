@@ -347,9 +347,10 @@ See the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 - [ ] Rewrite examples
 - [ ] Migrate from **jest** to **vitest** for tests
 
-## ✍ Author
+## ✍ Authors
 
-<%= author %>
+- <%= $utils.link(author.name, author.url) %>
+- <%= $utils.link(contributors[0].name, contributors[0].url) %>
 
 ## 📄 License
 
@@ -361,4 +362,4 @@ See all changes to this project in the [CHANGELOG.md](./CHANGELOG.md) file.
 
 ----
 
-Made with ❤ by <%= author %>
+Made with ❤ by <%= $utils.link(author.name, author.url) %> & <%= $utils.link(contributors[0].name, contributors[0].url) %>

@@ -22,7 +22,7 @@ Please read the [docs](https://github.com/estevanmaito/tailwindcss-multi-theme/)
   * [Examples](#examples)
 * [🤝 Contribute](#-contribute)
 * [/┆\ Roadmap](#-roadmap)
-* [✍ Author](#-author)
+* [✍ Authors](#-authors)
 * [📄 License](#-license)
 * [🧬 Changelog](#-changelog)
 
@@ -362,9 +362,10 @@ See the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 * \[ ] Rewrite examples
 * \[ ] Migrate from **jest** to **vitest** for tests
 
-## ✍ Author
+## ✍ Authors
 
-[Estevan Maito](https://github.com/estevanmaito)
+* [Estevan Maito](https://github.com/estevanmaito)
+* [Hervé Perchec](https://github.com/hperchec)
 
 ## 📄 License
 
@@ -376,7 +377,7 @@ See all changes to this project in the [CHANGELOG.md](./CHANGELOG.md) file.
 
 ***
 
-Made with ❤ by [Estevan Maito](https://github.com/estevanmaito)
+Made with ❤ by [Estevan Maito](https://github.com/estevanmaito) & [Hervé Perchec](https://github.com/hperchec)
 
 ***
 
