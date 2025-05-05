@@ -17,12 +17,12 @@
       "dom"
     ],
     "types": [
-      "vitest/globals"
+      // "vitest/globals",
+      // "./tests/**/*.d.ts"
     ]
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.d.ts",
     "tests/**/*.ts"
   ],
   "exclude": [

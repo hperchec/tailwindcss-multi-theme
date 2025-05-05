@@ -18,7 +18,7 @@ export default defineConfig({
   build: buildConfig,
   test: {
     alias: aliases,
-    environment: 'happy-dom',
+    // environment: 'happy-dom',
     setupFiles: [
       './tests/unit/setup.unit.ts'
     ],

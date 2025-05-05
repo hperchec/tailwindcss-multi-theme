@@ -19,6 +19,7 @@ export default await CLIFactory(cli => cli
   .scriptName('./bin/cli')
   .usage(`${getBanner()}\nUsage: $0 <command> [<options>]`)
   .disableDefaultCommand('docs generate:api')
+  .disableDefaultCommand('test')
   .command(commands)
   .demandCommand(1, ('Command is missing. See help to learn more.').red)
 )
