@@ -56,11 +56,11 @@ export default {
       ],
       'after:bump': [
         // Build code and generate docs
-        'npm run build',
+        'vite build',
         'node ./bin/cli docs generate:api',
         'node ./bin/cli docs generate:readme',
-        'node ./bin/cli docs:cli:private',
-        'node ./bin/cli docs:cli:public'
+        'node ./bin/cli docs:cli -c ./docs/cli/private/config.js',
+        'node ./bin/cli docs:cli -c ./docs/cli/public/config.js'
       ]
     }
   }
