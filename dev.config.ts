@@ -45,6 +45,9 @@ export default {
     }
   },
   release: {
+    git: {
+      requireBranch: 'master'
+    },
     hooks: {
       'before:init': [
         // Lint and run tests
