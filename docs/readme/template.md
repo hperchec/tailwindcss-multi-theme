@@ -36,7 +36,7 @@ In `tailwind.config.js` add `themeVariants` to the `theme` property, with the va
 import multiThemePlugin from '@hperchec/tailwindcss-multi-theme'
 
 export default {
-  darkMode: 'selector',
+  darkMode: 'false', // ⚠ See the note below
   theme: {
     themeVariants: [
       // Define themes here
@@ -60,7 +60,14 @@ export default {
 
 It will create a set of classes based on your `variants` and expect a class `.theme-<the name of your themeVariants>` at the top of your HTML document.
 
-For example, you can set attribute `class="theme-banana"` to the `<html>` element to apply *banana* theme. In that case, an element with `banana:bg-yellow` will have a yellow background.
+For example, you can set attribute `class="theme-banana"` to the `<html>` element to apply *banana* theme. In that case, an element with `banana:bg-yellow-200` will have a yellow background.
+
+> **IMPORTANT**: While a custom theme name like "banana" will not cause conflicts in the generated CSS,
+> you probably want to define "dark" theme, for which Tailwind provide support.
+> Since this plugin allows you to manage a wide variety of themes, if you want to automatically
+> apply a dark theme base on user preference, i recommend you to disable the **dark mode**
+> in your `tailwind.config.js`: `darkMode: 'false'` and manually apply
+> the corresponding theme in your JavaScript code (see [good practices](#good-practices) section)
 
 ### Options
 
@@ -101,7 +108,7 @@ Here, we add `@` prefix to the theme names to easily identify theme in class nam
 import multiThemePlugin from '@hperchec/tailwindcss-multi-theme'
 
 export default {
-  darkMode: 'selector',
+  darkMode: 'false',
   theme: {
     themeVariants: [
       // Define themes here
@@ -153,7 +160,7 @@ You should use something like a `<select>` and a short JavaScript code to switch
 let currentTheme
 
 /**
- * Switch to the given theme by setting the corresponding class on html element
+ * Switch to the given theme by setting the corresponding class on <html> element
  * @param {string} theme - The theme to switch to
  */
 function switchToTheme (theme) {
@@ -161,7 +168,7 @@ function switchToTheme (theme) {
   document.documentElement.classList.remove(`theme-@${currentTheme}`)
   // Set the new theme
   currentTheme = theme
-  // Add new class on HTML element
+  // Add new class on <html> element
   document.documentElement.classList.add(`theme-@${currentTheme}`)
 }
 
@@ -237,7 +244,7 @@ import multiThemePlugin from '@hperchec/tailwindcss-multi-theme'
 import themes from './themes.js'
 
 export default {
-  darkMode: 'selector',
+  darkMode: 'false',
   theme: {
     themeVariants: [
       /**

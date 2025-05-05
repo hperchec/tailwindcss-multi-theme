@@ -24,6 +24,12 @@ To run unit tests, run the following command:
 
 ```sh
 npm run test
+# With coverage enabled
+npm run test:coverage
+# Watch mode
+npm run test:watch
+# With @vitest/ui
+npm run test:ui
 ```
 
 ### Examples
