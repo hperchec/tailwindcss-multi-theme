@@ -39,7 +39,7 @@ Based on the original version of [estevanmaito/tailwindcss-multi-theme](https://
 Just install the plugin in your awesome **tailwindcss** project:
 
 ```sh
-npm install @hperchec/tailwindcss-multi-theme
+npm install -D @hperchec/tailwindcss-multi-theme
 ```
 
 ## 🕹️ Usage
